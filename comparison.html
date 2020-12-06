@@ -1,0 +1,43 @@
+<html>
+	<head>
+			 
+			<script type = "text/javascript" src = "./js/script.js"></script>
+			<link rel="stylesheet" type="text/css" href="./styles/style.css">
+	</head>
+	<body>
+		<div class = "wrapper">
+			<div class = "task_name">Сравнение двух json файлов</div>
+			<div class = "task">
+				<form>
+				<label for = "file1" >
+					<div class = "open_file" id = "o_f1"></div>
+				</label>
+					<input type = "file" accept = "application/json" id = "file1" onchange = "loadFile(this)"/></br>
+					<label for = "file2">
+					<div class = "open_file" id = "o_f2"></div>
+				</label>
+					<input type = "file" accept = "application/json" id = "file2" onchange = "loadFile(this)"/></br>
+					<input type = "button" id = "comparison_button" value = "Сравнить"/>
+				</form>
+				<div id = "errors" style = "color:red"></div>
+			</div>
+			<div id = "result">
+				<div class = "result_area" >
+					<div class = "area_name" id = "area1_name"></div>
+					<div class = "area_text" id = "file1_text"></div>
+				</div>
+				<div class = "result_area" >
+					<div class = "area_name" id = "area2_name"></div>
+					<div class = "area_text" id = "file2_text"></div>
+				</div>
+				<div class = "result_area">
+					<div class = "area_name" id = "area3_name">Результат</div>
+					<div class = "area_text" id = "result_text"></div>
+				</div>
+			
+			</div>
+		</div>
+		<script type = "text/javascript">
+			</script>
+	</body>
+</html>

@@ -1,0 +1,112 @@
+<html>
+	<head>
+		 <script type="text/javascript">
+		 
+			var count_multiplers = 2;
+			
+			
+			function multiplication(){
+				var result;									//создаем переменную для хранения результата
+				var array = new Array(); 					//создаем массив для хранения аргументов функции
+				 
+				for(var i = 0; i < arguments.length;i++){	//сохраняем аргументы функции в массив
+					array[i] = arguments[i];					
+					
+				}
+			
+				array.forEach(function(item, i, array){		// перебераем каждый элемент массива, в котором содержатся аргументы
+					if(i == 0){								// если элемент первый
+						result = item;						// сохраняем элемент в результат
+					}else{									// иначе
+						result *= item;						// умнажаем значение переменной result на текущий элемент и сохраняем в резульат
+					}
+				})
+				return result;								// возвращаем результат
+			}
+		
+			console.log("Умножение, множители в аргументах: " + multiplication(1,2,2,5,2,5,9,6,5,4,2,5,2,5));
+	
+
+			function multiplication1(array){
+					var result; 							//создаем переменную для хранения результата
+				
+					array.forEach(function(item, i, array){	// перебераем каждый элемент массива, который передан в аргументах функции
+						if(i == 0){							// если элемент первый
+							result = item;					// сохраняем элемент в результат
+						}else{								// иначе
+							result *= item;					// умнажаем значение переменной result на текущий элемент и сохраняем в резульат
+						}
+					})
+					return result;							// возвращаем результат
+				}
+	
+			var array = [1,2,2,5,2,5,9,6,5,4,2,5,2,5];
+			
+		function ggg(){
+			var form = document.getElementById("multiplication_form");
+			var array = new Array();
+			var errors = new Array();
+			for(var i = 0; i< count_multiplers;i++){
+				array[i] = Number(document.getElementById("m_" + i).value);
+				document.getElementById("m_" + i).nextElementSibling.innerHTML = "";
+				if(isNaN(array[i])){
+				
+					document.getElementById("m_" + i).nextElementSibling.innerHTML = "Только число!";
+					errors[i] = "NaN";
+				}else if(document.getElementById("m_" + i).value == ""){
+					document.getElementById("m_" + i).nextElementSibling.innerHTML = "Пустое значение!";
+					errors[i] = "undefined";
+				}else{
+					errors.splice(i,1);
+				}
+			}
+		
+			
+			if(errors.length == 0){
+				document.getElementById("result").innerHTML = "Результат: " + multiplication1(array);
+			}
+			
+			
+			
+			
+		}
+		
+		function add_m(elem){
+		
+			var new_elem = '<label for = "m_'+ count_multiplers +'">Множитель '+ (count_multiplers +1)  +':</label><input id = "m_'+ count_multiplers +'" type = "text"/><span style = "color:red"></span></br>';
+			elem.insertAdjacentHTML('beforeBegin', new_elem);
+			count_multiplers++;
+		}
+		</script>
+		<style>
+			*{
+				margin:0px;
+				padding: 0px;
+			}
+			
+			#multiplication_form input{
+				margin-top: 10px;
+				
+			}
+			
+			#multiplication_form input[type="text"]{
+				width: 100px;
+			}
+			
+			.result{
+				font-size: 30px;
+				color: green;
+			}
+		</style>
+	</head>
+	<body>
+	<form id = "multiplication_form">
+		<label for = "m_1">Множитель 1:</label><input id = "m_0" type = "text"/><span style = "color:red"></span></br>
+		<label for = "m_2">Множитель 2:</label><input id = "m_1" type = "text"/><span style = "color:red"></span></br>
+		<input type = "button" onclick = "add_m(this)" id = "add_button" value = "Добавить множитель"/>
+		<input type = "button" onclick = "ggg()" value = "Перемножить"/>
+		<div class = "result" id = "result"></div>
+	</form>
+		
+	</body>
+</html>
